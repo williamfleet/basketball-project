@@ -1,0 +1,23 @@
+.game-box {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.game-box label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.shot-clock {
+  font-size: 9.6rem;
+}
+
+.shot-clock-text {
+  font-size: 3.6rem;
+}
+
+.btn-shot-clock {
+  display: inline-block;
+}

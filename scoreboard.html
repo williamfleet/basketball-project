@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="This is a simple app to track and log the score of a basketball game."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+
+    <script defer src = "js/script.js"></script>
+
+    <title>Basketball Score Tracker - Let's play!</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="game-box">
+        <div class="team-name">
+          <label for="away-team">Team</label>
+          <input
+            id="away-team"
+            type="text"
+            placeholder="Away Team"
+            name="away-team"
+            required
+          />
+          <input
+            id="home-team"
+            type="text"
+            placeholder="Home Team"
+            name="home-team"
+            required
+          />
+        </div>
+        <div class="quarter-score">
+          <label for="1q-score-away">1</label>
+          <input
+            id="1q-score-away"
+            type="number"
+            placeholder="0"
+            name="1q-score-away"
+            onclick="generateAwayScore1(); calculateAwaySum()"
+            readonly
+          />
+          <input
+            id="1q-score-home"
+            type="number"
+            placeholder="0"
+            name="1q-score-home"
+            oninput="calculateHomeSum()"
+            required
+          />
+        </div>
+        <div class="quarter-score">
+          <label for="2q-score-away">2</label>
+          <input
+            id="2q-score-away"
+            type="number"
+            placeholder="0"
+            name="2q-score-away"
+            onclick="generateAwayScore2(); calculateAwaySum()"
+            readonly
+          />
+          <input
+            id="2q-score-home"
+            type="number"
+            placeholder="0"
+            name="2q-score-home"
+            oninput="calculateHomeSum()"
+            required
+          />
+          </div>
+          <div class="quarter-score">
+            <label for="3q-score-away">3</label>
+            <input
+              id="3q-score-away"
+              type="number"
+              placeholder="0"
+              name="3q-score-away"
+              onclick="generateAwayScore3(); calculateAwaySum()"
+              readonly
+            />
+            <input
+              id="3q-score-home"
+              type="number"
+              placeholder="0"
+              name="3q-score-home"
+              oninput="calculateHomeSum()"
+              required
+            />
+          </div>
+          <div class="quarter-score">
+              <label for="4q-score-away">4</label>
+              <input
+                id="4q-score-away"
+                type="number"
+                placeholder="0"
+                name="4q-score-away"
+                onclick="generateAwayScore4(); calculateAwaySum()"
+                readonly
+              />
+              <input
+                id="4q-score-home"
+                type="number"
+                placeholder="0"
+                name="4q-score-home"
+                oninput="calculateHomeSum()"
+                required
+              />
+            </div>
+            <div class="quarter-score">
+                <label for="final-score-away">T</label>
+                <input
+                  id="final-score-away"
+                  type="number"
+                  placeholder="0"
+                  name="final-score-away"
+                  readonly
+                />
+                <input
+                  id="final-score-home"
+                  type="number"
+                  placeholder="0"
+                  name="final-score-home"
+                  readonly
+                />
+            </div>
+        </div>
+
+        <div class="shot-clock">
+          <label for="countdown" class="shot-clock-text">Shot Clock:</label>
+          <span id="countdown">60</span>
+        </div>
+        <button class="btn-shot-clock" onclick="startCountdown()">Start Shot Clock</button>
+        <button class="btn-shot-clock" onclick="stopCountdown()">Reset</button>
+      </div>
+    </main>
+  </body>
+</html>

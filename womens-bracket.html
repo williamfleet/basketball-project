@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NCAA Tournament Bracket</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        overflow-x: scroll;
+      }
+      .bracket {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        overflow-x: auto;
+      }
+      .sweet-16 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .elite-8 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .round {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px; /* Adjust spacing between rounds */
+      }
+      .womensMatchup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+      }
+      .womensTeam {
+        border: 1px solid #333;
+        padding: 10px;
+        margin: 5px;
+        background-color: #f0f0f0;
+        width: 120px; /* Adjust width as needed */
+      }
+      .winner {
+        background-color: #ffff00;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Women's NCAA Tournament Bracket</h1>
+    <div class="bracket">
+        <div class="round">
+          <div class="womensMatchup">
+            <input type="text" class="womensTeam" placeholder="" />
+            <input type="text" class="womensTeam" placeholder="" />
+          </div>
+          <div class="womensMatchup">
+            <input type="text" class="womensTeam" placeholder="" />
+            <input type="text" class="womensTeam" placeholder="" />
+          </div>
+          <div class="womensMatchup">
+            <input type="text" class="womensTeam" placeholder="" />
+            <input type="text" class="womensTeam" placeholder="" />
+          </div>
+          <div class="womensMatchup">
+            <input type="text" class="womensTeam" placeholder="" />
+            <input type="text" class="womensTeam" placeholder="" />
+          </div>
+        </div>
+          <div class="round">
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+            <div class="womensMatchup">
+              <input type="text" class="womensTeam" placeholder="" />
+              <input type="text" class="womensTeam" placeholder="" />
+            </div>
+          </div>
+
+        <!-- Add more rounds as needed -->
+
+
+      </div>
+    </div>
+    <script>
+      // JavaScript to load saved womensTeam names
+      document.addEventListener('DOMContentLoaded', function() {
+        const womensMatchups = document.querySelectorAll('.womensMatchup');
+      
+        womensMatchups.forEach((womensMatchup, index) => {
+          const womensTeamInputs = womensMatchup.querySelectorAll('.womensTeam');
+          const savedwomensTeams = JSON.parse(localStorage.getItem(`womensMatchup_${index}`));
+      
+          if (savedwomensTeams) {
+            womensTeamInputs.forEach((input, inputIndex) => {
+              input.value = savedwomensTeams[inputIndex] || '';
+            });
+          }
+        });
+      });
+      
+      // JavaScript to save womensTeam names
+      const womensMatchups = document.querySelectorAll('.womensMatchup');
+      
+      womensMatchups.forEach((womensMatchup, index) => {
+        const womensTeamInputs = womensMatchup.querySelectorAll('.womensTeam');
+      
+        womensTeamInputs.forEach(input => {
+          input.addEventListener('input', function() {
+            const womensTeams = [];
+      
+            womensTeamInputs.forEach(input => {
+              womensTeams.push(input.value);
+            });
+      
+            localStorage.setItem(`womensMatchup_${index}`, JSON.stringify(womensTeams));
+          });
+        });
+      });
+      </script>
+  </body>
+</html>

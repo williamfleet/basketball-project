@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NCAA Tournament Bracket</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        overflow-x: scroll;
+      }
+      .bracket {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        overflow-x: auto;
+      }
+      .sweet-16 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .elite-8 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .round {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px; /* Adjust spacing between rounds */
+      }
+      .matchup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+      }
+      .team {
+        border: 1px solid #333;
+        padding: 10px;
+        margin: 5px;
+        background-color: #f0f0f0;
+        width: 120px; /* Adjust width as needed */
+      }
+      .winner {
+        background-color: #ffff00;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Men's NCAA Tournament Bracket</h1>
+    <div class="bracket">
+        <div class="round">
+          <div class="matchup">
+            <input type="text" class="team" placeholder="" />
+            <input type="text" class="team" placeholder="" />
+          </div>
+          <div class="matchup">
+            <input type="text" class="team" placeholder="" />
+            <input type="text" class="team" placeholder="" />
+          </div>
+          <div class="matchup">
+            <input type="text" class="team" placeholder="" />
+            <input type="text" class="team" placeholder="" />
+          </div>
+          <div class="matchup">
+            <input type="text" class="team" placeholder="" />
+            <input type="text" class="team" placeholder="" />
+          </div>
+        </div>
+          <div class="round">
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+            </div>
+          </div>
+          <div class="round">
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+              <input type="text" class="team" placeholder="" />
+            </div>
+            <div class="matchup">
+              <input type="text" class="team" placeholder="" />
+              <input type="text" class="team" placeholder="" />
+            </div>
+          </div>
+
+        <!-- Add more rounds as needed -->
+
+
+      </div>
+    </div>
+    <script>
+      // JavaScript to load saved team names
+      document.addEventListener('DOMContentLoaded', function() {
+        const matchups = document.querySelectorAll('.matchup');
+      
+        matchups.forEach((matchup, index) => {
+          const teamInputs = matchup.querySelectorAll('.team');
+          const savedTeams = JSON.parse(localStorage.getItem(`matchup_${index}`));
+      
+          if (savedTeams) {
+            teamInputs.forEach((input, inputIndex) => {
+              input.value = savedTeams[inputIndex] || '';
+            });
+          }
+        });
+      });
+      
+      // JavaScript to save team names
+      const matchups = document.querySelectorAll('.matchup');
+      
+      matchups.forEach((matchup, index) => {
+        const teamInputs = matchup.querySelectorAll('.team');
+      
+        teamInputs.forEach(input => {
+          input.addEventListener('input', function() {
+            const teams = [];
+      
+            teamInputs.forEach(input => {
+              teams.push(input.value);
+            });
+      
+            localStorage.setItem(`matchup_${index}`, JSON.stringify(teams));
+          });
+        });
+      });
+      </script>
+  </body>
+</html>
